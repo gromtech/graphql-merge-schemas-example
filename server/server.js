@@ -33,7 +33,8 @@ async function getMergedSchema(schemas) {
   const remoteSchemas = await Promise.all(remoteSchemasPromises);
   return {
     schema: mergeSchemas({
-      schemas: remoteSchemas
+      schemas: remoteSchemas,
+      onTypeConflict: (leftType, rightType) => leftType
     }),
     port: 3000,
     query: "query { workorders trees }"
