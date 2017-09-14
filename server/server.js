@@ -85,4 +85,4 @@ async function run(schemas) {
   }
 }
 
-run(allSchemas);
+run(allSchemas).catch((err) => { console.error(err) });
