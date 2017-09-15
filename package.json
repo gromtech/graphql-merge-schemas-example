@@ -15,7 +15,8 @@
     "apollo-fetch": "0.6.0",
     "graphql": "0.10.5",
     "graphql-server-koa": "1.1.2",
-    "graphql-tools": "2.0.0-alpha.10",
+    "graphql-tools": "2.0.0-alpha.12",
+    "graphql-type-json": "0.1.4",
     "koa": "2.3.0",
     "koa-bodyparser": "4.2.0",
     "koa-router": "7.2.1"

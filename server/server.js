@@ -33,7 +33,8 @@ async function getMergedSchema(schemas) {
   const remoteSchemas = await Promise.all(remoteSchemasPromises);
   return {
     schema: mergeSchemas({
-      schemas: remoteSchemas
+      schemas: remoteSchemas,
+      onTypeConflict: (leftType, rightType) => leftType
     }),
     port: 3000,
     query: "query { workorders trees }"
@@ -51,7 +52,7 @@ function runGraphQLServer(schema, port, query) {
   router.post(GRAPHQL_URL, graphqlKoa({ schema: schema }));
   router.get(GRAPHQL_URL, graphqlKoa({ schema: schema }));
 
-  router.get(GRAPHIQL_URL, graphiqlKoa({ endpointURL: '/graphql' }));
+  router.get(GRAPHIQL_URL, graphiqlKoa({ endpointURL: GRAPHQL_URL }));
   router.get('/', async ctx => {
     ctx.redirect(`${GRAPHIQL_URL}?query=${query}`);
   });
@@ -85,4 +86,4 @@ async function run(schemas) {
   }
 }
 
-run(allSchemas);
+run(allSchemas).catch((err) => { console.error(err) });
