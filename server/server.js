@@ -52,7 +52,7 @@ function runGraphQLServer(schema, port, query) {
   router.post(GRAPHQL_URL, graphqlKoa({ schema: schema }));
   router.get(GRAPHQL_URL, graphqlKoa({ schema: schema }));
 
-  router.get(GRAPHIQL_URL, graphiqlKoa({ endpointURL: '/graphql' }));
+  router.get(GRAPHIQL_URL, graphiqlKoa({ endpointURL: GRAPHQL_URL }));
   router.get('/', async ctx => {
     ctx.redirect(`${GRAPHIQL_URL}?query=${query}`);
   });

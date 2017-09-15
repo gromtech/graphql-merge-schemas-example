@@ -1,4 +1,4 @@
-var { GraphQLObjectType } = require('graphql');
+const { GraphQLObjectType } = require('graphql');
 const { makeExecutableSchema } = require('graphql-tools');
 const GraphQLJSON = require('graphql-type-json');
 const workorders = require('../data/workorders');
