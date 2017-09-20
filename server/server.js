@@ -34,7 +34,8 @@ async function getMergedSchema(schemas) {
   return {
     schema: mergeSchemas({
       schemas: remoteSchemas,
-      onTypeConflict: (leftType, rightType) => leftType
+      onTypeConflict: (leftType, rightType) => leftType,
+      resolvers: () => {}
     }),
     port: 3000,
     query: "query { workorders trees }"
